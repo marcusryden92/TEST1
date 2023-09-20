@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: AlfaSlab;
+    src: url(fonts/alfa/AlfaSlabOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: MontserratRegular;
+    src: url(fonts/montserrat/Montserrat-Regular.ttf);
+}
+
+body {
+    background-color: black;
+}
+
+.containerBackground {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(images/desert.jpg);
+    background-size: 100% auto;
+    background-repeat: repeat;
+}
+
+.containerForeground {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-image: url(images/pattern2_small.png);
+    background-size: auto auto;
+    background-repeat: repeat;
+    
+    animation: animateForeground 20s linear infinite;
+}
+
+@keyframes animateForeground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 160px -140px;
+    }
+}
+
+.containerMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50vw;
+    height: 600px;
+    margin: auto auto;
+    background-color: rgba(0,0,0,0.9);
+    border-radius: 5rem;
+    border: salmon double .5rem;
+    min-width: 600px;
+    min-height: 600px;
+}
+
+.containerMenu {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    border-bottom: salmon 2px solid;
+    border-top: salmon 2px solid;
+}
+
+.button {
+    display: block;
+    background: transparent;
+    font-family: "MontserratRegular", Helvetica, sans-serif;
+    border: salmon double 3.5px;
+    color: salmon;
+    font-size: 1rem;
+    border-radius: .4rem;
+    text-transform: uppercase;
+    margin: 1.5rem 0rem;
+    padding: .5rem 1.7rem;
+    min-width: 50px;
+    cursor: pointer;
+    transition: color 0.4s linear, border-color 0.2s linear;
+    position: relative;
+    z-index: 1;
+}
+
+.button:hover {
+    color: black;
+    border-color: white;
+}
+
+.button:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: salmon;
+    transition: transform 0.5s, background 0.4s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    transform: scaleX(0);
+    z-index: -1;
+}
+
+.button:hover::before {
+    background: white;
+    transform: scaleX(1);
+}
+
+.button.active {
+    /*color: hsl(57, 100%, 50%);
+    border-color: rgb(248, 195, 37);*/
+    color: rgb(248, 195, 37);
+    border-color: salmon;
+}
+
+.button.active::before {
+    background: white;
+    transform: scaleX(1);
+}
+
+.button.active:hover {
+    color: black;
+    border-color: white;
+}
+
+.button.active:hover::before {
+    background: white;
+    transform: scaleX(1);
+}
+
+
+
+.containerMenu ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.containerMenu li {
+    padding: 1rem;
+}
+
+h1 {
+    text-align: center;
+    font-family: "AlfaSlab";
+    font-size: 5rem;
+    color: rgb(248, 195, 37);
+    padding: 0 5rem;
+    margin-top: 0.7rem;
+    letter-spacing: 2px;
+}
+
+
+.containerContent {
+    position: relative;
+    background-color: salmon;
+    width: 80%;
+    margin-top: 2rem;
+    color: salmon;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
